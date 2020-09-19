@@ -140,28 +140,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        /*
-        setGamePiecesSizeDP(65);
-        //making player's graveyard to view on gui
-        ViewGroup playerGY = (ViewGroup) findViewById(R.id.playerGY);
-        for (int k = 1; k < 13; k++) {
-            ImageButton playerPiece = new ImageButton(this);
-            playerPiece.setLayoutParams(params);
-            playerPiece.setImageResource(R.drawable.blue6);
-            playerPiece.setScaleType(ImageView.ScaleType.FIT_XY);
-            playerGY.addView(playerPiece);
-        }
-
-        //making opp's graveyard to view on gui
-        ViewGroup oppGY = (ViewGroup) findViewById(R.id.oppGY);
-        for (int l = 1; l < 13; l++) {
-            ImageButton oppPiece = new ImageButton(this);
-            oppPiece.setLayoutParams(params);
-            oppPiece.setImageResource(R.drawable.red10);
-            oppPiece.setScaleType(ImageView.ScaleType.FIT_XY);
-            oppGY.addView(oppPiece);
-        }
-         */
     }
 
     public void setGamePiecesSizeDP(int layoutSizeDP) {
