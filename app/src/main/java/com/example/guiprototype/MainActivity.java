@@ -13,29 +13,32 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+import java.util.Vector;
+
 public class MainActivity extends AppCompatActivity {
 
     ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     ImageButton[][] gamePieces = new ImageButton[10][10];
 
+    int rbombs = 6, bbombs = 6;
+    int rmarshal = 1, bmarshal = 1;
+    int rgeneral = 1, bgeneral = 1;
+    int rcolonel = 2, bcolonel = 2;
+    int rmajor = 3, bmajor = 3;
+    int rcaptain = 4, bcaptain = 4;
+    int rlieutenant = 4, blieutenant = 4;
+    int rsergeant = 4, bsergeant = 4;
+    int rminer = 5, bminer = 5;
+    int rscout = 8, bscout = 8;
+    int rspy = 1, bspy = 1;
+    int rflag = 1, bflag = 1;
+    int emptySpace = 20;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        int rbombs = 6, bbombs = 6;
-        int rmarshal = 1, bmarshal = 1;
-        int rgeneral = 1, bgeneral = 1;
-        int rcolonel = 2, bcolonel = 2;
-        int rmajor = 3, bmajor = 3;
-        int rcaptain = 4, bcaptain = 4;
-        int rlieutenant = 4, blieutenant = 4;
-        int rsergeant = 4, bsergeant = 4;
-        int rminer = 5, bminer = 5;
-        int rscout = 8, bscout = 8;
-        int rspy = 1, bspy = 1;
-        int rflag = 1, bflag = 1;
-        int emptySpace = 20;
 
         /**
          * External Citation, will finish citation later if keeping this code
@@ -44,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
          */
         ViewGroup gameBoardGrid = (ViewGroup) findViewById(R.id.gameBoardGrid);
         setGamePiecesSizeDP(75);
-        //populating game board GridLayout with game piece ImageButtons
+        //initializing the gamePieces ImageButton 2d array
         //might need to change this to an onDraw method, but for now it's fine
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 gamePieces[i][j] = new ImageButton(this);
+
                 if (rbombs > 0) {
                     gamePieces[i][j].setImageResource(R.drawable.redb);
                     rbombs--;
@@ -127,24 +131,51 @@ public class MainActivity extends AppCompatActivity {
                 }
                 gamePieces[i][j].setLayoutParams(params);
                 gamePieces[i][j].setScaleType(ImageView.ScaleType.FIT_XY);
-                //using setOnClickListener right now only to test if buttons are unique and clickable, this will be unique class later
-                gamePieces[i][j].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ImageButton test = (ImageButton) view;
-                        Log.i("button", "Clicked on " + test.getId());
-                    }
-                });
                 gamePieces[i][j].setId(Integer.parseInt(i+""+j));
-                gameBoardGrid.addView(gamePieces[i][j]);
             }
         }
 
+        randomizeGamePieces(0,5,0,10);
+        randomizeGamePieces(5,10,0,10);
+        randomizeGamePieces(4,6,0,10);
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                gameBoardGrid.addView(gamePieces[i][j]);
+            }
+        }
     }
 
     public void setGamePiecesSizeDP(int layoutSizeDP) {
         //I think this code hard-codes the ImageButtons in dp
         params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, layoutSizeDP, getResources().getDisplayMetrics());
         params.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, layoutSizeDP, getResources().getDisplayMetrics());
+    }
+
+    public void randomizeGamePieces(int rowStart, int rowEnd, int colStart, int colEnd) {
+        ImageButton temp;
+        Random rand = new Random();
+        int randRow, randCol;
+        for (int i = rowStart; i < rowEnd; i++) {
+            for (int j = colStart; j < colEnd; j++) {
+                //find random coord on board that is not a wall
+                do {
+                    randRow = rand.nextInt(rowEnd - rowStart) + rowStart;
+                    randCol = rand.nextInt(colEnd - colStart) + colStart;
+                } while (isCoordWall(randRow, randCol));
+
+                //only swaps pieces if piece at (i, j) is not a wall
+                if (!isCoordWall(i,j)) {
+                    temp = gamePieces[i][j];
+                    gamePieces[i][j] = gamePieces[randRow][randCol];
+                    gamePieces[randRow][randCol] = temp;
+                }
+            }
+        }
+    }
+
+    public boolean isCoordWall(int x, int y) {
+        return ((x== 4 && (y == 1 || y == 2 || y == 7 || y == 8)) ||
+                (x == 5 && (y == 1 || y == 2 || y == 7 || y == 8)));
     }
 }
