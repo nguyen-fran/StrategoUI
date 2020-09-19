@@ -2,6 +2,7 @@ package com.example.guiprototype;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,9 +19,11 @@ import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
 
-    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    ViewGroup.LayoutParams params;  //this will hold the layout_width and layout_height for the ImageButtons
+    ViewGroup gameBoardGrid;    //this will be the GridLayout from the xml
     ImageButton[][] gamePieces = new ImageButton[10][10];
 
+    //instance vars to know how many of each type of game piece to make
     int rbombs = 6, bbombs = 6;
     int rmarshal = 1, bmarshal = 1;
     int rgeneral = 1, bgeneral = 1;
@@ -41,14 +44,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /**
-         * External Citation, will finish citation later if keeping this code
-         * Sources: https://stackoverflow.com/questions/3477581/android-add-a-view-to-a-specific-layout-from-code
-         *          https://stackoverflow.com/questions/5255184/android-and-setting-width-and-height-programmatically-in-dp-units
+         * External Citation
+         * Date:    18 September 2020
+         * Problem: Using wrap_content for 10 ImageButtons in a row couldn't fit all of them on one screen width
+         *
+         * Sources: https://stackoverflow.com/questions/4743116/get-screen-width-and-height-in-android
+         * Solution:    I used the code from this post to make the ImageButtons' width relative to the screen
          */
-        ViewGroup gameBoardGrid = (ViewGroup) findViewById(R.id.gameBoardGrid);
-        setGamePiecesSizeDP(75);
+        params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.width = (Resources.getSystem().getDisplayMetrics().widthPixels) / 11;;
+        params.height = params.width;   //setting height to width to make a square game piece later
+
+        /**
+         * External Citation
+         * Date:    12 September 2020
+         * Problem: Wanted a way to make 100 ImageButtons programatically rather than through xml
+         *
+         * Sources: https://stackoverflow.com/questions/3477581/android-add-a-view-to-a-specific-layout-from-code
+         * Solution:    I used the code from this post, swapped their TextView for an ImageButton, and put the code in a nested for loop
+         */
+        gameBoardGrid = (ViewGroup) findViewById(R.id.gameBoardGrid);
         //initializing the gamePieces ImageButton 2d array
-        //might need to change this to an onDraw method, but for now it's fine
+        //TODO: might need to change this to an onDraw method
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 gamePieces[i][j] = new ImageButton(this);
@@ -135,10 +152,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //randomizing red pieces' pos, then blue pieces' pos, then the pieces in the middle two rows
         randomizeGamePieces(0,5,0,10);
         randomizeGamePieces(5,10,0,10);
         randomizeGamePieces(4,6,0,10);
 
+        //putting the gamePiece ImageButtons in the gameBoard GridLayout
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 gameBoardGrid.addView(gamePieces[i][j]);
@@ -146,13 +165,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void setGamePiecesSizeDP(int layoutSizeDP) {
-        //I think this code hard-codes the ImageButtons in dp
-        params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, layoutSizeDP, getResources().getDisplayMetrics());
-        params.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, layoutSizeDP, getResources().getDisplayMetrics());
-    }
-
+    //randomizes the game pieces in the region given by the parameters
     public void randomizeGamePieces(int rowStart, int rowEnd, int colStart, int colEnd) {
+        if (rowStart < 0 || rowEnd < 0 || colStart < 0 || colEnd < 0 ||
+            rowStart > 9 || rowEnd > 9 || colStart > 9 || colEnd > 9) {
+            return;
+        }
+
         ImageButton temp;
         Random rand = new Random();
         int randRow, randCol;
@@ -165,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 } while (isCoordWall(randRow, randCol));
 
                 //only swaps pieces if piece at (i, j) is not a wall
-                if (!isCoordWall(i,j)) {
+                if (!isCoordWall(i, j)) {
                     temp = gamePieces[i][j];
                     gamePieces[i][j] = gamePieces[randRow][randCol];
                     gamePieces[randRow][randCol] = temp;
@@ -174,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //returns true if coodinates given by parameters is a wall that a game piece can't be placed on, else false
     public boolean isCoordWall(int x, int y) {
         return ((x== 4 && (y == 1 || y == 2 || y == 7 || y == 8)) ||
                 (x == 5 && (y == 1 || y == 2 || y == 7 || y == 8)));
