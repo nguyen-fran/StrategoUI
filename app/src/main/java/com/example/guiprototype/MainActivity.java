@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
     //randomizes the game pieces in the region given by the parameters
     public void randomizeGamePieces(int rowStart, int rowEnd, int colStart, int colEnd) {
         if (rowStart < 0 || rowEnd < 0 || colStart < 0 || colEnd < 0 ||
-            rowStart > 9 || rowEnd > 9 || colStart > 9 || colEnd > 9) {
+            rowStart > 10 || rowEnd > 10 || colStart > 10 || colEnd > 10) {
             return;
         }
 
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
     //returns true if coodinates given by parameters is a wall that a game piece can't be placed on, else false
     public boolean isCoordWall(int x, int y) {
-        return ((x== 4 && (y == 1 || y == 2 || y == 7 || y == 8)) ||
-                (x == 5 && (y == 1 || y == 2 || y == 7 || y == 8)));
+        return ((x== 4 && (y == 3 || y == 2 || y == 7 || y == 6)) ||
+                (x == 5 && (y == 3 || y == 2 || y == 7 || y == 6)));
     }
 }
