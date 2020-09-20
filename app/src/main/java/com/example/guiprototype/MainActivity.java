@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     bflag--;
                 }
                 gamePieces[i][j].setLayoutParams(params);
-                gamePieces[i][j].setScaleType(ImageView.ScaleType.FIT_XY);
+                gamePieces[i][j].setScaleType(ImageView.ScaleType.FIT_XY);  //fits images in ImageButton
                 gamePieces[i][j].setId(Integer.parseInt(i+""+j));
             }
         }
