@@ -31,80 +31,225 @@
             android:text="Player's Graveyard"
             android:textSize="18sp" />
 
-        <LinearLayout
+        <androidx.gridlayout.widget.GridLayout
             android:id="@+id/playerGY"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FF0000FF"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:background="#900000FF"
+            app:columnCount="11"
+            app:rowCount="2">
 
             <ImageView
                 android:id="@+id/blue1_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="0"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue1" />
 
             <ImageView
                 android:id="@+id/blue2_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="1"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue2" />
 
             <ImageView
                 android:id="@+id/blue3_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="2"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue3" />
 
             <ImageView
                 android:id="@+id/blue4_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="3"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue4" />
 
             <ImageView
                 android:id="@+id/blue5_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="4"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue5" />
 
             <ImageView
                 android:id="@+id/blue6_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="5"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue6" />
 
             <ImageView
                 android:id="@+id/blue7_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="6"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue7" />
 
             <ImageView
                 android:id="@+id/blue8_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="7"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue8" />
 
             <ImageView
                 android:id="@+id/blue9_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="8"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue9" />
 
             <ImageView
                 android:id="@+id/blue10_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="9"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blue10" />
 
             <ImageView
                 android:id="@+id/blueb_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="10"
+                app:layout_row="0"
                 app:srcCompat="@drawable/blueb" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/blue1_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="0"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue2_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="1"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue3_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="2"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue4_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="3"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue5_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="4"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue6_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="5"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue7_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="6"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue8_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="7"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue9_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="8"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blue10_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="9"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/blueb_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="10"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+        </androidx.gridlayout.widget.GridLayout>
 
         <TextView
             android:id="@+id/textView5"
@@ -113,88 +258,232 @@
             android:text="Opponent's Graveyard"
             android:textSize="18sp" />
 
-        <LinearLayout
+        <androidx.gridlayout.widget.GridLayout
             android:id="@+id/oppGY"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFFF0000"
-            android:columnCount="13"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:background="#90FF0000"
+            app:columnCount="11"
+            app:rowCount="2">
 
             <ImageView
                 android:id="@+id/red1_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="0"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red1" />
 
             <ImageView
                 android:id="@+id/red2_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="1"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red2" />
 
             <ImageView
                 android:id="@+id/red3_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="2"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red3" />
 
             <ImageView
                 android:id="@+id/red4_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="3"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red4" />
 
             <ImageView
                 android:id="@+id/red5_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="4"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red5" />
 
             <ImageView
                 android:id="@+id/red6_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="5"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red6" />
 
             <ImageView
                 android:id="@+id/red7_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="6"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red7" />
 
             <ImageView
                 android:id="@+id/red8_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="7"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red8" />
 
             <ImageView
                 android:id="@+id/red9_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="8"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red9" />
 
             <ImageView
                 android:id="@+id/red10_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="9"
+                app:layout_row="0"
                 app:srcCompat="@drawable/red10" />
 
             <ImageView
                 android:id="@+id/redb_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_column="10"
+                app:layout_row="0"
                 app:srcCompat="@drawable/redb" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/red1_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="0"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red2_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="1"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red3_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="2"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red4_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="3"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red5_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="4"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red6_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="5"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red7_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="6"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red8_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="7"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red9_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="8"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/red10_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="9"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+            <TextView
+                android:id="@+id/redb_dead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:textSize="18sp"
+                app:layout_column="10"
+                app:layout_gravity="center_horizontal"
+                app:layout_row="1" />
+
+        </androidx.gridlayout.widget.GridLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="7"
+        android:layout_weight="5"
         android:gravity="center"
         android:orientation="vertical">
 

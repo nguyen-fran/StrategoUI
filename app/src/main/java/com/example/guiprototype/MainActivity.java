@@ -153,9 +153,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //randomizing red pieces' pos, then blue pieces' pos, then the pieces in the middle two rows
-        randomizeGamePieces(0,5,0,10);
-        randomizeGamePieces(5,10,0,10);
-        randomizeGamePieces(4,6,0,10);
+        //randomizeGamePieces(0,5,0,10);
+        //randomizeGamePieces(5,10,0,10);
+        //randomizeGamePieces(4,6,0,10);
+        randomizeGamePieces(1,5, 0,10);
+        randomizeGamePieces(5, 10, 0, 10);
+        randomizeGamePieces(0, 4, 0, 10);
+        randomizeGamePieces(7, 10, 0, 10);
 
         //putting the gamePiece ImageButtons in the gameBoard GridLayout
         for (int i = 0; i < 10; i++) {
